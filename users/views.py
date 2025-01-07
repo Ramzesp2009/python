@@ -1,9 +1,10 @@
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
-from users.forms import UserLoginForm, UserRegistrationForm
+from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 
 
 def login(request):
@@ -15,6 +16,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
+                messages.success(request, f"{username}, Ви увійшли в аккаунт.")
                 return HttpResponseRedirect(reverse("main:index"))
     else:
         form = UserLoginForm()
@@ -32,7 +34,10 @@ def registration(request):
         if form.is_valid():
             form.save()
             user = form.instance
-            auth.login(self.request, user)
+            auth.login(request, user)
+            messages.success(
+                request, f"{user.username}, Ви успішне зареєстрували свій аккаунт."
+            )
             return HttpResponseRedirect(reverse("main:index"))
     else:
         form = UserRegistrationForm()
@@ -44,13 +49,27 @@ def registration(request):
     return render(request, "users/registration.html", context)
 
 
+@login_required
 def profile(request):
+    if request.method == "POST":
+        form = ProfileForm(
+            data=request.POST, instance=request.user, files=request.FILES
+        )
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Профайл оновлено успішно.")
+            return HttpResponseRedirect(reverse("user:profile"))
+    else:
+        form = ProfileForm(instance=request.user)
+
     context = {
         "title": "Home - Кабінет",
+        "form": form,
     }
     return render(request, "users/profile.html", context)
 
 
 def logout(request):
+    messages.success(request, f"{request.user.username}, Ви успішно вийшли з аккаунту.")
     auth.logout(request)
     return redirect(reverse("main:index"))
