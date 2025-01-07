@@ -7,6 +7,7 @@
         <div class="bg-white p-4 mb-4 mx-2 rounded custom-shadow">
           <h3 class="text-center mb-4">Профіль користувача</h3>
           <form>
+            {% csrf_token %}
             <div class="row">
               <div class="col-md-12 mb-3 text-center">
                 <img src="{% static "deps/images/baseavatar.jpg" %}" alt="Аватар
