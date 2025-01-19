@@ -1,0 +1,10 @@
+Die erste Zeile
+2 4 6 8 10 
+HamburgBerlinMunchen
+Hamburg
+Berlin
+Munchen
+PeterJuliaWerner
+Peter:31
+Julia:28
+Werner:35
