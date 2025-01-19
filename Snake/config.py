@@ -1,0 +1,2 @@
+SIDE = 700
+SNAKE_SIZE = 50

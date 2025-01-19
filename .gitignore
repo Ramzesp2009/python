@@ -1,0 +1,11 @@
+.*/
+dev_env/
+qodana.yaml
+fl
+hotel_management/
+my_projects/
+/hotel_management/
+/hotel_management/
+.idea/
+.ipynb_checkpoints/
+.venv

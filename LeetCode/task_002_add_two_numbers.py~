@@ -1,0 +1,94 @@
+# 2. Add Two Numbers
+# You are given two non-empty linked lists representing
+# two non-negative integers. The digits are stored in reverse
+# order, and each of their nodes contains a single digit. Add
+# the two numbers and return the sum as a linked list
+# You may assume the two numbers do not contain any leading zero,
+# except the number 0 itself.
+
+# l1 = [2,4,3]
+# l2 = [5,6,4]
+<<<<<<< HEAD
+l1 = [5,5,5]
+l2 = [2,0,2]
+
+
+class Solution():
+    def sum_two_numbers(self, l1 : list[int], l2 : list[int]) -> list[int]:
+        l1.reverse()
+        l2.reverse()
+        numbers_1 = int(''.join(map(str, l1)))
+        numbers_2 = int(''.join(map(str, l2)))
+        sum_numbers = numbers_1 + numbers_2
+        l3 = [int(i) for i in str(sum_numbers)]
+        l3.reverse()
+        return l3
+
+
+solution = Solution()
+print(solution.sum_two_numbers(l1, l2))
+
+
+
+=======
+# l1 = [5,5,5]
+# l2 = [2,0,2]
+# l1 = [9,9,9,9,9,9,9]
+# l2 = [9,9,9,9]
+
+# My solution
+# class Solution():
+#     def sum_two_numbers(self, l1 : list[int], l2 : list[int]) -> list[int]:
+#         l1.reverse()
+#         l2.reverse()
+#         numbers_1 = int(''.join(map(str, l1)))
+#         numbers_2 = int(''.join(map(str, l2)))
+#         sum_numbers = numbers_1 + numbers_2
+#         l3 = [int(i) for i in str(sum_numbers)]
+#         l3.reverse()
+#         return l3
+#
+#
+# solution = Solution()
+# print(solution.sum_two_numbers(l1, l2))
+
+
+# solution from LeetCode
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def addTwoNumbers(self, l1, l2):
+        dummy = ListNode()  # Фіктивний вузол для початку результату
+        current = dummy
+        carry = 0
+
+        while l1 or l2 or carry:
+            val1 = l1.val if l1 else 0
+            val2 = l2.val if l2 else 0
+            total = val1 + val2 + carry
+
+            carry = total // 10
+            current.next = ListNode(total % 10)
+            current = current.next
+
+            if l1: l1 = l1.next
+            if l2: l2 = l2.next
+
+        return dummy.next
+
+# Тестування
+l1 = ListNode(2, ListNode(4, ListNode(3)))  # 342
+l2 = ListNode(5, ListNode(6, ListNode(4)))  # 465
+
+solution = Solution()
+result = solution.addTwoNumbers(l1, l2)
+
+# Вивід результату
+while result:
+    print(result.val, end=" -> ")
+    result = result.next
+>>>>>>> ec15a5ea9a4454d785bfa32cf0ecb661375c4429

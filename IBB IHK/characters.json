@@ -1,0 +1,167 @@
+[
+    {
+        "name": "Charakter_9278",
+        "race": "Halfling",
+        "class": "Paladin",
+        "attributes": {
+            "St\u00e4rke": 25,
+            "Intelligenz": 34,
+            "Agilit\u00e4t": 21
+        },
+        "timestamp": "2024-11-21 12:27:55"
+    },
+    {
+        "name": "Charakter_7422",
+        "race": "Dwarf",
+        "class": "Warlock",
+        "attributes": {
+            "St\u00e4rke": 40,
+            "Intelligenz": 47,
+            "Agilit\u00e4t": 11
+        },
+        "timestamp": "2024-11-21 12:27:56"
+    },
+    {
+        "name": "Charakter_4809",
+        "race": "Elf",
+        "class": "Cleric",
+        "attributes": {
+            "St\u00e4rke": 21,
+            "Intelligenz": 49,
+            "Agilit\u00e4t": 8
+        },
+        "timestamp": "2024-11-21 12:27:58"
+    },
+    {
+        "name": "Charakter_7920",
+        "race": "Dwarf",
+        "class": "Sorcerer",
+        "attributes": {
+            "St\u00e4rke": 22,
+            "Intelligenz": 27,
+            "Agilit\u00e4t": 31
+        },
+        "timestamp": "2024-11-21 12:27:59"
+    },
+    {
+        "name": "Charakter_4127",
+        "race": "Human",
+        "class": "Sorcerer",
+        "attributes": {
+            "St\u00e4rke": 46,
+            "Intelligenz": 27,
+            "Agilit\u00e4t": 9
+        },
+        "timestamp": "2024-11-21 12:28:00"
+    },
+    {
+        "name": "Charakter_7309",
+        "race": "Half-Orc",
+        "class": "Rogue",
+        "attributes": {
+            "St\u00e4rke": 10,
+            "Intelligenz": 40,
+            "Agilit\u00e4t": 23
+        },
+        "timestamp": "2024-11-21 12:31:54"
+    },
+    {
+        "name": "Charakter_9881",
+        "race": "Dragonborn",
+        "class": "Cleric",
+        "attributes": {
+            "St\u00e4rke": 1,
+            "Intelligenz": 41,
+            "Agilit\u00e4t": 6
+        },
+        "timestamp": "2024-11-21 12:31:55"
+    },
+    {
+        "name": "Charakter_2157",
+        "race": "Halfling",
+        "class": "Bard",
+        "attributes": {
+            "St\u00e4rke": 28,
+            "Intelligenz": 2,
+            "Agilit\u00e4t": 21
+        },
+        "timestamp": "2024-11-21 12:31:57"
+    },
+    {
+        "name": "Charakter_3452",
+        "race": "Human",
+        "class": "Bard",
+        "attributes": {
+            "St\u00e4rke": 37,
+            "Intelligenz": 41,
+            "Agilit\u00e4t": 28
+        },
+        "timestamp": "2024-11-21 12:31:58"
+    },
+    {
+        "name": "Charakter_2962",
+        "race": "Halfling",
+        "class": "Barbarian",
+        "attributes": {
+            "St\u00e4rke": 15,
+            "Intelligenz": 12,
+            "Agilit\u00e4t": 46
+        },
+        "timestamp": "2024-11-21 12:31:59"
+    },
+    {
+        "name": "Charakter_5901",
+        "race": "Tiefling",
+        "class": "Rogue",
+        "attributes": {
+            "St\u00e4rke": 13,
+            "Intelligenz": 34,
+            "Agilit\u00e4t": 2
+        },
+        "timestamp": "2024-11-21 12:32:46"
+    },
+    {
+        "name": "Charakter_7212",
+        "race": "Halfling",
+        "class": "Cleric",
+        "attributes": {
+            "St\u00e4rke": 22,
+            "Intelligenz": 2,
+            "Agilit\u00e4t": 26
+        },
+        "timestamp": "2024-11-21 12:32:47"
+    },
+    {
+        "name": "Charakter_6368",
+        "race": "Half-Orc",
+        "class": "Fighter",
+        "attributes": {
+            "St\u00e4rke": 45,
+            "Intelligenz": 37,
+            "Agilit\u00e4t": 15
+        },
+        "timestamp": "2024-11-21 12:32:49"
+    },
+    {
+        "name": "Charakter_6283",
+        "race": "Half-Orc",
+        "class": "Monk",
+        "attributes": {
+            "St\u00e4rke": 1,
+            "Intelligenz": 11,
+            "Agilit\u00e4t": 46
+        },
+        "timestamp": "2024-11-21 12:32:50"
+    },
+    {
+        "name": "Charakter_1898",
+        "race": "Dragonborn",
+        "class": "Cleric",
+        "attributes": {
+            "St\u00e4rke": 1,
+            "Intelligenz": 13,
+            "Agilit\u00e4t": 33
+        },
+        "timestamp": "2024-11-21 12:32:51"
+    }
+]

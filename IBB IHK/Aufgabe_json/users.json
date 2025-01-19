@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Max Mustermann",
+        "alter": "29",
+        "email": "max.mustermann@example.com",
+        "hobby": "Schwimmen"
+    },
+    {
+        "name": "Lisa Muller",
+        "alter": "34",
+        "email": "lisa.mueller@example@.com",
+        "hobby": "Yoga"
+    },
+    {
+        "name": "Tom Schneider",
+        "alter": "42",
+        "email": "tom.schneider@gmail.com",
+        "hobby": "Radfahren"
+    },
+    {
+        "name": "Pavlo Romazan",
+        "alter": "40",
+        "email": "ramzesp2009@gmail.com",
+        "hobby": "Lesen"
+    }
+]

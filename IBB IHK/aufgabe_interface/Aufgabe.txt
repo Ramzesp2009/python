@@ -1,0 +1,51 @@
+# Aufgabe 1
+# Modelliere ein Interface für einen Musicplayer
+# Erstelle eine abstrakte Basisklasse MusicPlayer mit den Methoden play(track: str), pause(), stop()
+
+# Aufgabe 1.2
+# Implemtentiere 2 Klassen:
+# 1 -> SpotifyPlayer
+# 2 -> LocalMusicPlayer
+
+# Aufgabe 1.3
+# Schreibe ein Programm, das einen Track ausgibt. Du kannst den Track frei erfinden
+# und als String übergeben
+----------------------------------------------------------------------------------------------------
+# Aufgabe 2
+# Definiere eine Abstrakte Basisklasse Animal mit den Methoden get_name() und make_sound()
+
+# Aufgabe 2.2
+# Implementiere die Klasse Dog und gib Wuff wuff als Laut aus
+# Implementiere die Klasse Cat und gib Mautz Mautz als Laut aus
+# Implementiere die Klasse Bird und gib Piep Piep Piep, wir ham uns alle lieb aus
+
+# Aufgabe 2.3
+# erstelle eine Funktion treat_animal(animal: Animal) die den Namen des Tieres ausgibt
+# und seinen Laut abspielt
+----------------------------------------------------------------------------------------------------
+# Aufgabe 3
+# Simuliere ein Zahlungsportal mit mehreren Zahlungsmethoden
+# Definiere eine abstrakte Klasse PaymentGateway mit den Methoden:
+# - initialize_payment(amount: float)
+# - process_payment()
+# - cancel_payment()
+
+# Aufgabe 3.2
+# Implementiere 2 Klassen:
+# - CreditCardPayment
+# - BitcoinPayment
+
+# Aufgabe 3.3
+# Schreibe ein Programm das mehrere Zahlungsmethoden verwendet und überprüft ob sie erfolgreich sind
+----------------------------------------------------------------------------------------------------
+# Aufgabe 4
+# Modelliere ein Interface für verschiedene IoT Geräte
+# Erstelle eine abstracte Klasse IoTDevice mit den Methoden connect(), send_command() und disconnect()
+
+# Aufgabe 4.2
+# Implementiere die Klassen Smartlight und SmartThermostat
+# Bei dem Smartlight kann das Licht ein und ausgeschaltet werden
+# Bei dem Thermostat kann man die Temperatur einstellen
+
+# Aufgabe 4.3
+# Schreibe ein Programm, das die Geräte initialisiert, Befehle sendet und sie wieder trennt
