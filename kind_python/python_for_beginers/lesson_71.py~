@@ -1,0 +1,32 @@
+# request = {'id': 1, 'url': 'https://proproprogs.org', 'method': 'GET', 'timeout': 1000, 'data': '12.12.2002', }
+# json_data = {
+#     'id': 2,
+#     'access': True,
+#     'info': [
+#         '01.01.2023',
+#         {
+#             'login': 'user',
+#             'email': 'ramzesp2009@gmil.com'
+#         },
+#         True,
+#         2024
+#     ]
+# }
+
+<<<<<<< HEAD
+primaty_keys = {1, 2, 3, 4}
+
+
+match primaty_keys:
+    case set() as keys if len(keys) == 4:
+        print(f"Primaty keys {keys}")
+=======
+primary_keys = {1, 2, 3, 4}
+
+
+match primary_keys:
+    case set() as keys if len(keys) == 4:
+        print(f"Primary keys {keys}")
+>>>>>>> 0846ce4 (First commit on work laptop)
+    case _:
+        print("wrong request")

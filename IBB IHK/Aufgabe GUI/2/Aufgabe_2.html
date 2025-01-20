@@ -1,0 +1,127 @@
+
+    <!-- Aufgabe 1 -->
+    <!-- Baue einen Button mit einer Hover Animation -->
+ 
+    <!-- Aufgabe 2 -->
+    <!-- Baue einen Link mit einem Border und der Schriftart  Ubuntu (Tipp: Du findest die Schriftart bei google fonts.
+     - Binde die Schrift so ein, das du nicht in den Knast kommst, da gibts nämlich nur Wasser und Brot und das ist bekanntlich für Enten.)
+     - Baue deinen Link in einem Design, welches schlicht und einfach ist, aber durch seine dezente Art trotzdem auffällt.
+     -->
+ 
+     <!-- Aufgabe 3 -->
+      <!-- Bilder und Text sind wichtig. Baue eine Section mit 3 Reihen. In Jeder Reihe sollte ein Bild und ein Text sein.
+       - In der ersten Reihe beginnst du mit dem Bild links und dem Text rechts, in der 2. Reihe ist das Bild rechts und die Schrift links.
+         Die 3. Reihe ist wieder so wie die erste.
+       - Der Container der Section sollte etwa 1300px maximale Breite haben. Such dir schöne Farben aus um das ganze zu gestalten und
+         lasse dich gerne mal von anderen Designern auf diversen Plattformen inspireren.
+         Die Bilder sollten eine maximale Breite von 400px haben.
+       -->
+ 
+    <!-- Aufgabe 4 -->
+     <!-- Baue einen Link, der gut aussieht und dich auf die knastseite.html weiterleitet -->
+     <!-- Füttere die Ente im Knast. Klau Geld von Dagobert und füttere die Ente mit Brot und gib der Ente den Namen von jemanden,
+      der die Schrift als CDN eingebunden hat. -->
+ 
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <style>
+          .hover-button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+          }
+      
+          .hover-button:hover {
+            background-color: #3e8e41;
+          }
+      
+          .link-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f5f5f5;
+            text-align: center;
+            font-family: 'Ubuntu', sans-serif;
+          }
+      
+          .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+          }
+      
+          .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+      
+          .col-md-6 {
+            flex-basis: 50%;
+            padding: 20px;
+          }
+      
+          .img-fluid {
+            max-width: 400px;
+            height: auto;
+            margin: 0 auto;
+          }
+      
+          .link-knast {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+          }
+      
+          .link-knast:hover {
+            background-color: #3e8e41;
+          }
+        </style>
+      </head>
+      <body>
+        <button class="hover-button">Klicken Sie hier</button>
+      
+        <div class="link-container">
+          <a href="https://www.example.com">Link mit Ubuntu-Schriftart</a>
+        </div>
+      
+        <section class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="bild1.jpg" alt="Bild 1" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+              <p>Text 1</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p>Text 2</p>
+            </div>
+            <div class="col-md-6">
+              <img src="bild2.jpg" alt="Bild 2" class="img-fluid">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p>Text 3</p>
+            </div>
+            <div class="col-md-6">
+              <img src="bild3.jpg" alt="Bild 3" class="img-fluid">
+            </div>
+          </div>
+        </section>
+      
+        <a href="knastseite.html" class="link-knast">Füttere die Ente im Knast!</a>
+      </body>
+      </html>
