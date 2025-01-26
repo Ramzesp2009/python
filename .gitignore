@@ -3,6 +3,7 @@ venv/
 venv1/
 .pylintrc
 __pycache__/
+stop_place.txt
 
 # ide stuff
 .vscode
@@ -11,4 +12,4 @@ __pycache__/
 # django stuff
 db.sqlite3
 media/
-stop_place
+
