@@ -7,3 +7,6 @@ dev_env/
 .pytest_cache/
 __pycache__/
 requirements.txt
+/IBB IHK/Django/
+course_good_python/Django 4/djvenv/
+
