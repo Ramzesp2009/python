@@ -1,0 +1,12 @@
+def typeValidation(variable, _type):
+    if _type(variable) == 'number' and _type == 'number':
+        return True
+    elif _type(variable) == 'string' and _type == 'string':
+        return True
+    elif type(variable) == 'boolean' and _type == 'boolean':
+        return True
+    elif type(variable) == 'object' and _type == 'object':
+        return True
+    else:
+        return False
+
