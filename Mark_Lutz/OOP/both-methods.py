@@ -10,7 +10,13 @@ class Methods:
     def cmeth(cls, x):
         print([cls, x])
 
-    # smeth = staticmethod(smeth)
-    # cmeth = classmethod(cmeth)
+    @property
+    def name(self):
+        return 'Bob ' + self.__class__.__name__
 
-Methods.smeth(7)
+    smeth = staticmethod(smeth)
+    cmeth = classmethod(cmeth)
+
+# Methods.smeth(7)
+obj = Methods()
+print(obj.name)

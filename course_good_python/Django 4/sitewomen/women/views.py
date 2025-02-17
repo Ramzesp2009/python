@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.template.loader import render_to_string
 
+from .forms import AddPostForm
 from .models import Women, Category, TagPost
 
 menu = [
@@ -12,20 +13,10 @@ menu = [
     {'title': "Login", 'url_name': 'login'},
 ]
 
-data_db = [
-    {'id': 1, 'title': 'Angelina Jolie', 'content': "<h1>Angelina Jolie</h1> born June 4, 1975 is an American actress, "
-                                                    "filmmaker, and humanitarian. The recipient of numerous accolades, "
-                                                    "including an Academy Award, a Tony Award and three Golden Globe Awards,"
-                                                    " she has been named Hollywood's highest-paid actress multiple times.",
-     'is_published': True},
-    {'id': 2, 'title': 'Brad Pitt', 'content': '<h1>Brad Pitt</h1> is an American actor.', 'is_published': False},
-    {'id': 3, 'title': 'Demi Moore', 'content': '<h1>Demi Moore</h1> is an American actress.', 'is_published': True},
-]
-
-
 
 def index(request): # HttpRequest
-    posts = Women.published.all()
+    posts = Women.published.all().select_related('cat')
+
     data = {'title': "The main page of the site",
             'menu': menu,
             'posts': posts,
@@ -46,7 +37,26 @@ def show_post(request, post_slug):
     return render(request, 'women/post.html', context=data)
 
 def addpage(request):
-    return HttpResponse("Add page")
+    if request.method == 'POST':
+        form = AddPostForm(request.POST)
+        if form.is_valid():
+            # print(form.cleaned_data)
+            # try:
+            #     Women.objects.create(**form.cleaned_data)
+            #     return redirect('home')
+            # except:
+            #     form.add_error(None, "Помилка при додаванні статей")
+            form.save()
+            return redirect('home')
+    else:
+        form = AddPostForm()
+
+    data = {
+        'menu': menu,
+        'title': "Додавання статей",
+        'form': form
+    }
+    return render(request, 'women/addpage.html', data)
 
 def contact(request):
     return HttpResponse("Contact us")
@@ -56,7 +66,7 @@ def login(request):
 
 def show_category(request, cat_slug):
     category = get_object_or_404(Category, slug=cat_slug)
-    posts = Women.published.filter(cat_id=category.pk)
+    posts = Women.published.filter(cat_id=category.pk).select_related('cat')
 
     data = {
         'title': f"Rubrica: {category.name}",
@@ -71,7 +81,7 @@ def page_not_found(request, exception):
 
 def show_tag_postlist(request, tag_slug):
     tag = get_object_or_404(TagPost, slug=tag_slug)
-    posts = tag.tags.filter(is_published=Women.Status.PUBLISHED)
+    posts = tag.tags.filter(is_published=Women.Status.PUBLISHED).select_related('cat')
     data = {
         'title': f"Tag: {tag.tag}",
         'menu': menu,
