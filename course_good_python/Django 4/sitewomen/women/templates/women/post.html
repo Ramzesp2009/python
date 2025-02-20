@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block breadcrumbs %}7
+{% block breadcrumbs %}
 <!-- Tags -->
 {% with post.tags.all as tags %}
 {% if tags %}
@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ post.title }}</h1>
+<h1>{{ object.title }}</h1>
 
 {% if post.photo %}
 <p><img class="img-article-left" src="{{post.photo.url}}"></p>

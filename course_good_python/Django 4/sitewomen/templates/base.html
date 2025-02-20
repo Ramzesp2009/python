@@ -32,9 +32,9 @@
 	<td valign="top" class="left-chapters">
 	<ul id="leftchapters">
 		{% if cat_selected == 0 %}
-		<li class="selected">All categories</li>
+		<li class="selected">Усі категорії</li>
 		{% else %}
-		<li><a href="{% url 'home' %}">All categories</a></li>
+		<li><a href="{% url 'home' %}">Усі категорії</a></li>
 		{% endif %}
 
 		{% show_categories cat_selected %}
@@ -58,6 +58,8 @@
 {% endblock %}
 	</div>
 <!-- Конец блока контента -->
+{% block navigation %}
+{% endblock %}
 
 </td></tr></table>
 </td></tr>

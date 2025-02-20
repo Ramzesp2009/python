@@ -28,7 +28,7 @@ class Women(models.Model):
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Час створення")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Час останньої зміни")
     is_published = models.BooleanField(choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)),
-                                       default=Status.DRAFT, verbose_name="Опубліковано") # tuple[0](Status.choices),default=Status.PUBLISHED, verbose_name="Опубліковано")
+                                       default=Status.DRAFT, verbose_name="Опубліковано")
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='posts', verbose_name="Категорія")
     tags = models.ManyToManyField('TagPost', blank=True, related_name='tags', verbose_name="Теги")
     husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True,
@@ -51,9 +51,6 @@ class Women(models.Model):
     def get_absolute_url(self):
         return reverse('post', kwargs={'post_slug': self.slug})
 
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(self.title)
-    #     super().save(*args, **kwargs)
 
 class Category(models.Model):
 
