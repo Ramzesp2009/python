@@ -15,6 +15,7 @@ if t[M-1] not in S:
 d['*'] = M
 
 print(d)
+# print(S)
 
 a = "romozan ramazan romazan"
 N = len(a)
