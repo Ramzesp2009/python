@@ -60,13 +60,21 @@ class MyTabView(customtkinter.CTkTabview):
         self.todo_scrollbar.grid(row=1, column=0, sticky="nse")
         self.todo_listbox.config(yscrollcommand=self.todo_scrollbar.set)
 
+        # Створюємо фрейм для кнопок переміщення
+        self.buttons_frame = customtkinter.CTkFrame(task_tab)
+        self.buttons_frame.grid(row=1, column=1, padx=10, pady=5)
+
         # Кнопка переміщення завдання у "виконані"
-        self.move_button = customtkinter.CTkButton(task_tab, text="➡", command=self.complete_task)
-        self.move_button.grid(row=1, column=1, padx=10, pady=5)
+        self.move_button = customtkinter.CTkButton(self.buttons_frame, text=">>>", width=40, command=self.complete_task)
+        self.move_button.grid(row=0, column=1, padx=5, pady=5)
+
+        # Кнопка переміщення завдання у "невиконані"
+        self.undo_button = customtkinter.CTkButton(self.buttons_frame, text="<<<", width=40, command=self.undo_task)
+        self.undo_button.grid(row=1, column=1, padx=5, pady=5)
 
         # Заголовок для списку виконаних завдань
         self.label_done = customtkinter.CTkLabel(task_tab, text="Виконані завдання:", font=("Arial", 14, "bold"))
-        self.label_done.grid(row=0, column=2, padx=20, pady=10)
+        self.label_done.grid(row=0, column=2, padx=10, pady=10)
 
         # Права колонка (виконані завдання)
         self.done_listbox = tk.Listbox(task_tab, width=40, height=10)
@@ -112,6 +120,13 @@ class MyTabView(customtkinter.CTkTabview):
         if selected_index:
             task_id = self.todo_tasks[selected_index[0]]
             self.task_manager.complete_task(task_id)
+            self.load_tasks()
+
+    def undo_task(self):
+        selected_index = self.done_listbox.curselection()
+        if selected_index:
+            task_id = self.done_tasks[selected_index[0]]
+            self.task_manager.undo_task(task_id)
             self.load_tasks()
 
     def delete_task(self):
