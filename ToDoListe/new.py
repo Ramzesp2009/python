@@ -8,6 +8,9 @@ class MyTabView(customtkinter.CTkTabview):
         super().__init__(master, **kwargs)
         self.task_manager = task_manager
 
+        # self.grid_columnconfigure(0, weight=1)
+        # self.grid_rowconfigure(0, weight=1)
+
         self.tabs = ["Створити завдання", "Переглянути завдання"]
         for tab_name in self.tabs:
             self.add(tab_name)
@@ -41,6 +44,14 @@ class MyTabView(customtkinter.CTkTabview):
     def view_tasks_tab(self):
         task_tab = self.tab("Переглянути завдання")
 
+        task_tab.grid_columnconfigure(0, weight=1)  
+        task_tab.grid_columnconfigure(2, weight=1)  
+        task_tab.grid_rowconfigure(1, weight=1)  
+
+        # Заголовок для списку невиконаних завдань
+        self.label_todo = customtkinter.CTkLabel(task_tab, text="Невиконані завдання:", font=("Arial", 14, "bold"))
+        self.label_todo.grid(row=0, column=0, padx=20, pady=10)
+
         # Ліва колонка (невиконані завдання)
         self.todo_listbox = tk.Listbox(task_tab, width=40, height=10)
         self.todo_listbox.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
@@ -52,6 +63,10 @@ class MyTabView(customtkinter.CTkTabview):
         # Кнопка переміщення завдання у "виконані"
         self.move_button = customtkinter.CTkButton(task_tab, text="➡", command=self.complete_task)
         self.move_button.grid(row=1, column=1, padx=10, pady=5)
+
+        # Заголовок для списку виконаних завдань
+        self.label_done = customtkinter.CTkLabel(task_tab, text="Виконані завдання:", font=("Arial", 14, "bold"))
+        self.label_done.grid(row=0, column=2, padx=20, pady=10)
 
         # Права колонка (виконані завдання)
         self.done_listbox = tk.Listbox(task_tab, width=40, height=10)
