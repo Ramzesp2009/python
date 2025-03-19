@@ -170,6 +170,10 @@ class TaskManager:
         self.cursor.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
         self.conn.commit()
 
+    def undo_task(self, task_id):
+        self.cursor.execute("UPDATE tasks SET completed = 0 WHERE id = ?", (task_id,))
+        self.conn.commit()
+
 
 class App(customtkinter.CTk):
     def __init__(self):
