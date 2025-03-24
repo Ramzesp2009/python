@@ -130,9 +130,9 @@ class MyTabView(customtkinter.CTkTabview):
             self.load_tasks()
 
     def delete_task(self):
-        selected_index = self.todo_listbox.curselection() or self.done_listbox.curselection()
+        selected_index = self.done_listbox.curselection()
         if selected_index:
-            task_id = self.todo_tasks.get(selected_index[0]) or self.done_tasks.get(selected_index[0])
+            task_id = self.done_tasks.get(selected_index[0])
             if task_id:
                 self.task_manager.delete_task(task_id)
                 self.load_tasks()

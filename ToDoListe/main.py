@@ -1,6 +1,8 @@
 import customtkinter
 import sqlite3
 from datetime import datetime
+# from customtkinter import CTkListbox
+
 
 
 class TaskManager:
@@ -8,6 +10,7 @@ class TaskManager:
         self.conn = sqlite3.connect(db_name)
         self.cursor = self.conn.cursor()
         self.create_table()
+        
 
     def create_table(self):
         self.cursor.execute("""
@@ -40,13 +43,21 @@ class MyTabView(customtkinter.CTkTabview):
     def __init__(self, master, task_manager, **kwargs):
         super().__init__(master, **kwargs)
         self.task_manager = task_manager
-
-        self.add("Створити завдання")
-        self.add("Переглянути завдання")
-
+        # Список вкладок
+        self.tabs = ["Створити завдання", "Переглянути завдання"]
+        # Створення вкладок
+        for tab_name in self.tabs:
+            self.add(tab_name)
+        # Додавання полів у вкладку "Створити завдання"
         self.create_task_tab()
+        # Додавання списку завдань у вкладку "Переглянути завдання"
         self.view_tasks_tab()
         self.load_tasks()
+        # Налаштовуємо розширення вкладок
+        for tab_name in self.tabs:
+            self.tab(tab_name).grid_columnconfigure(0, weight=1)
+            self.tab(tab_name).grid_rowconfigure(3, weight=1)
+
 
     def create_task_tab(self):
         task_tab = self.tab("Створити завдання")
@@ -64,6 +75,8 @@ class MyTabView(customtkinter.CTkTabview):
         self.button_save = customtkinter.CTkButton(task_tab, text="Зберегти", command=self.save_task)
         self.button_save.grid(row=2, column=1, padx=20, pady=20, sticky="se")
 
+
+
     def view_tasks_tab(self):
         task_tab = self.tab("Переглянути завдання")
         self.todo_listbox = customtkinter.CTkTextbox(task_tab, width=300, height=200)
@@ -78,15 +91,23 @@ class MyTabView(customtkinter.CTkTabview):
         self.delete_button = customtkinter.CTkButton(task_tab, text="Видалити завдання", command=self.delete_task)
         self.delete_button.grid(row=2, column=2, padx=10, pady=10, sticky="se")
 
+
     def load_tasks(self):
-        self.todo_listbox.delete("1.0", "end")
-        self.done_listbox.delete("1.0", "end")
+        self.todo_listbox.delete(0, "end")
+        self.done_listbox.delete(0, "end")
+
+        self.todo_tasks = []
+        self.done_tasks = []
 
         for task in self.task_manager.get_tasks(completed=False):
-            self.todo_listbox.insert("end", f"{task[1]} (до {task[2]})\n")
+            task_str = f"{task[1]} (до {task[2]})\n"
+            self.todo_listbox.insert("end", task_str)
+            self.todo_tasks[task_str] = task[0]
 
         for task in self.task_manager.get_tasks(completed=True):
-            self.done_listbox.insert("end", f"{task[1]} (до {task[2]})\n")
+            task_str = f"{task[1]} (до {task[2]})\n"
+            self.done_listbox.insert("end", task_str)
+            self.done_tasks[task_str] = task[0]
 
     def save_task(self):
         name = self.entry_name.get()
@@ -99,23 +120,39 @@ class MyTabView(customtkinter.CTkTabview):
             self.entry_date.insert(0, datetime.today().strftime("%Y-%m-%d"))
 
     def complete_task(self):
-        self.task_manager.complete_task(1)  # Потрібно отримати ID вибраного завдання
+        selected_task = self.todo_listbox.get("active")
+        if selected_task in self.todo_tasks:
+            task_id = self.todo_tasks[selected_task]
+        self.task_manager.complete_task(task_id)
         self.load_tasks()
 
     def delete_task(self):
-        self.task_manager.delete_task(1)  # Потрібно отримати ID вибраного завдання
+        selected_task = self.todo_listbox.get("active") or self.done_listbox.get("active")
+        if selected_task in self.todo_tasks:
+            task_id = self.todo_tasks[selected_task]
+        elif selected_task in self.done_tasks:
+            task_id = self.done_tasks[selected_task]
+        else:
+            return
+
+        self.task_manager.delete_task(task_id)
         self.load_tasks()
 
 
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
+        customtkinter.set_appearance_mode("dark")
         self.geometry("700x450")
         self.title("Менеджер завдань")
+
 
         self.task_manager = TaskManager()
         self.tab_view = MyTabView(master=self, task_manager=self.task_manager)
         self.tab_view.grid(row=0, column=0, padx=20, pady=20, sticky="nsew")
+
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
 
 
 if __name__ == "__main__":
