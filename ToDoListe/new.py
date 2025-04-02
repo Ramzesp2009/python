@@ -23,6 +23,7 @@ class MyTabView(customtkinter.CTkTabview):
             self.tab(tab_name).grid_columnconfigure(0, weight=1)
             self.tab(tab_name).grid_rowconfigure(3, weight=1)
 
+    # Метод для створення вкладки "Створити завдання"
     def create_task_tab(self):
         task_tab = self.tab("Створити завдання")
         self.label_name = customtkinter.CTkLabel(task_tab,
@@ -48,12 +49,13 @@ class MyTabView(customtkinter.CTkTabview):
         self.button_save.grid(row=2, column=1,
                               padx=20, pady=20, sticky="se")
 
+    # Метод для створення вкладки "Переглянути завдання"
     def view_tasks_tab(self):
         task_tab = self.tab("Переглянути завдання")
 
-        task_tab.grid_columnconfigure(0, weight=1)  
-        task_tab.grid_columnconfigure(2, weight=1)  
-        task_tab.grid_rowconfigure(1, weight=1)  
+        # task_tab.grid_columnconfigure(0, weight=1)
+        task_tab.grid_columnconfigure(2, weight=1)
+        task_tab.grid_rowconfigure(1, weight=1)
 
         # Заголовок для списку невиконаних завдань
         self.label_todo = customtkinter.CTkLabel(task_tab,
@@ -62,12 +64,13 @@ class MyTabView(customtkinter.CTkTabview):
         self.label_todo.grid(row=0, column=0, padx=20, pady=10)
 
         # Ліва колонка (невиконані завдання)
-        self.todo_listbox = tk.Listbox(task_tab, width=40, height=10)
-        self.todo_listbox.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
+        self.todo_listbox = tk.Listbox(task_tab, width=40, height=20)
+        self.todo_listbox.grid(row=1, column=0, padx=0, pady=0,
+                               sticky="nsew") # padx=10, pady=5
 
         self.todo_scrollbar = tk.Scrollbar(task_tab, orient="vertical",
                                            command=self.todo_listbox.yview)
-        self.todo_scrollbar.grid(row=1, column=0, sticky="nse")
+        self.todo_scrollbar.grid(row=1, column=0, sticky="nse") # pady=5
         self.todo_listbox.config(yscrollcommand=self.todo_scrollbar.set)
 
         # Створюємо фрейм для кнопок переміщення
@@ -93,13 +96,13 @@ class MyTabView(customtkinter.CTkTabview):
         self.label_done.grid(row=0, column=2, padx=10, pady=10)
 
         # Права колонка (виконані завдання)
-        self.done_listbox = tk.Listbox(task_tab, width=40, height=10)
-        self.done_listbox.grid(row=1, column=2, padx=10, pady=5,
-                               sticky="nsew")
+        self.done_listbox = tk.Listbox(task_tab, width=40, height=20)
+        self.done_listbox.grid(row=1, column=2, padx=0, pady=0,
+                               sticky="nsew") # padx=10, pady=5
 
         self.done_scrollbar = tk.Scrollbar(task_tab, orient="vertical",
                                            command=self.done_listbox.yview)
-        self.done_scrollbar.grid(row=1, column=2, sticky="nse")
+        self.done_scrollbar.grid(row=1, column=2, sticky="nse") # pady=5
         self.done_listbox.config(yscrollcommand=self.done_scrollbar.set)
 
         # Кнопка видалення
@@ -123,7 +126,7 @@ class MyTabView(customtkinter.CTkTabview):
         for task in self.task_manager.get_tasks(completed=True):
             task_str = f"{task[1]} (до {task[2]})"
             self.done_listbox.insert("end", task_str)
-            self.done_tasks[self.done_listbox.size() - 1] = task[0]  
+            self.done_tasks[self.done_listbox.size() - 1] = task[0]
 
     def save_task(self):
         name = self.entry_name.get()
