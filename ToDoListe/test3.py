@@ -6,7 +6,7 @@ class MyTabView(customtkinter.CTkTabview):
         super().__init__(master, **kwargs)
 
         # Список вкладок
-        self.tabs = ["Створити завдання", "Переглянути завдання"]
+        self.tabs = ["Створити завдання", "Завдання до виконання", "Виконані завдання"]
 
         # Створення вкладок
         for tab_name in self.tabs:
@@ -51,7 +51,7 @@ class MyTabView(customtkinter.CTkTabview):
 
     def view_tasks_tab(self):
         """ Додає список завдань у вкладку 'Переглянути завдання' """
-        task_tab = self.tab("Переглянути завдання")
+        task_tab = self.tab("Завдання до виконання")
 
         # Список невиконаних завдань (з можливістю вибору)
         self.label_todo = customtkinter.CTkLabel(task_tab, text="Завдання для виконання")

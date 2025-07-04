@@ -121,6 +121,7 @@ class MyTabView(customtkinter.CTkTabview):
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
+        customtkinter.set_appearance_mode("dark")
 
         self.geometry("700x450")
         self.title("Менеджер завдань")
